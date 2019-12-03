@@ -107,14 +107,15 @@ void handle_client(int clnt_sock){
 	}
 
 	printf("File to send: %s\n", buffer);
-	if(buffer[0] == '.' || buffer[0] == '/'){
-		file_found = 0;
-	}
 
 	if(access(buffer, F_OK) != -1){
 		file_found = 1;
 	}
 	else{
+		file_found = 0;
+	}
+
+	if(buffer[0] == '.' || buffer[0] == '/'){
 		file_found = 0;
 	}
 
